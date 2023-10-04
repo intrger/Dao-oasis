@@ -1,0 +1,28 @@
+<div *ngIf="surveyInfo$ | async as surveyInfo">
+    <h3>{{ surveyInfo.title }}</h3>
+    <div>{{ surveyInfo.description }}</div>
+    <div><a href="{{ surveyInfo.link }}" target="_blank"></a></div>
+    <!-- need to vote -->
+    <div *ngIf="!surveyInfo.total && surveyInfo?.status === 'open'">
+        <app-survey-voting [survey]="surveyInfo"></app-survey-voting>
+    </div>
+    <!-- voted -->
+    <div *ngIf="surveyInfo.total || surveyInfo?.status === 'closed'">
+        <div *ngFor="let variant of surveyInfo.variants">
+            <div class="result">
+                <div class="result-percent" [ngStyle]="{'width': countPercent(variant.count)}">
+                    &nbsp;
+                </div>
+                <div class="result-text">
+                    <div class="result-value">
+                        {{ variant.value }}
+                    </div>
+                    <div class="result-percent-value">
+                        {{ countPercent(variant.count) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

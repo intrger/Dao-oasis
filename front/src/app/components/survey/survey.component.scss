@@ -1,0 +1,32 @@
+.result {
+    position: relative;
+    margin-top: 10px;
+    line-height: 24px;
+
+    .result-percent {
+        background-color:aquamarine;
+        border-radius:3px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;  
+    }
+
+    .result-text {
+        position: relative;
+        justify-content: space-between;
+        display: flex;
+        padding: 10px 0 10px 10px;
+        align-items: center;
+
+        .result-value {
+            display: flex;
+        }
+
+        .result-percent-value {
+            display: flex;
+        }
+    }
+
+
+}

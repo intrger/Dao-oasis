@@ -1,0 +1,17 @@
+mat-form-field {
+    min-width: 500px;
+}
+
+.variant-button {
+    width: 56px;
+    height: 56px;
+    margin-left: 5px;
+    min-width: 38px !important;
+    padding: 0px !important;
+    margin-top: -19px;
+
+    mat-icon {
+        font-size: 1.3rem;
+        margin-left: 4px;
+    }
+}

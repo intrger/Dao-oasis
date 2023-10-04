@@ -1,0 +1,15 @@
+<form [formGroup]="form" (submit)="submit()">
+    <!-- <div *ngFor="let variant of survey.variants">
+        <div></div>
+    </div> -->
+    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="variants">
+        <div *ngFor="let variant of survey?.variants">
+            <mat-radio-button class="example-radio-button" value="{{ variant.key }}">
+                {{ variant.value }}
+            </mat-radio-button>
+        </div>
+    </mat-radio-group>
+    <div style="margin-top: 10px;">
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+    </div>
+</form>

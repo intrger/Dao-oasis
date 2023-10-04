@@ -1,0 +1,39 @@
+<h2>Create survey</h2>
+
+<form [formGroup]="form" (submit)="submit()">
+    <div>
+        <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input matInput type="text" name="title" formControlName="title">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Description</mat-label>
+            <textarea matInput name="description" formControlName="description"></textarea>
+        </mat-form-field>
+    </div>
+
+    <div *ngFor="let variant of variants.controls; let i = index" formArrayName="variants">
+        <mat-form-field>
+            <mat-label>Answer #{{ i + 1 }}</mat-label>
+            <input matInput type="text" name="variant_{{i}}" [formControlName]="i">
+        </mat-form-field>
+        <button mat-flat-button color="warn" class="variant-button" *ngIf="i < variants.controls.length - 1" (click)="removeVariant(i)">
+            <mat-icon aria-hidden="false" fontIcon="delete"></mat-icon>
+        </button>
+        <!-- TODO add without add button, on last element is not empty-->
+        <button mat-flat-button color="primary" class="variant-button" *ngIf="i === variants.controls.length - 1" (click)="addVariant()">
+            <mat-icon aria-hidden="false" fontIcon="add"></mat-icon>
+        </button>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Link</mat-label>
+            <input matInput type="text" name="link" formControlName="link">
+        </mat-form-field>
+    </div>
+    <div>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+    </div>
+</form>
